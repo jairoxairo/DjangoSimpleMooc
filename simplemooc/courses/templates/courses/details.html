@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
 <div class="splash">
@@ -7,11 +7,10 @@
         <div class="pure-u-1">
             <div class="l-box splash-text">
                 <h1 class="splash-head">
-                    Uma Simples Plataforma de Ensino a Distância
+                    {{ course }}
                 </h1>
                 <h2 class="splash-subhead">
-                 O simple MOOc visa simplificar o ensino a ditância,
-                    provendo ferramentas objetivas e de fácil uso para cursos a distância.
+                 {{ course.description }}
                 </h2>
                 <p>
                     <a href="#" class="pure-button primary-button">Inscreva-se</a>
@@ -24,21 +23,16 @@
     <div class="pure-u-2-3">
         <div class="l-box">
             <h4 class="content-subhead">Sobre o CUrso</h4>
-            <p>
-                AEHUAEHUUHEAHUAUHAHU
-                aAUHEUHAUHAUHUHAUHAEU
-                AEUHAUHHUAHUAHUAHUHUA
-            </p>
-            <p>
-                AEHUAEHUUHEAHUAUHAHU
-                aAUHEUHAUHAUHUHAUHAEU
-                AEUHAUHHUAHUAHUAHUHUA
-            </p>
+            {{ course.about|linebreaks }}
         </div>
     </div>
     <div class="pure-u-1-3">
         <div class="l-box">
-            <img src="http://placehold.it/400x250" alt="">
+            {% if course.image %}
+            <img src="{{ course.image.url }}" alt=""/>
+            {% else %}
+            <img src="{% static 'images/image.jpeg' %}" alt=""/>
+            {% endif %}
         </div>
     </div>
 </div>
